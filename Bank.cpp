@@ -8,16 +8,15 @@ void Bank::getBank(){
 }
 
 Bank::Bank()
-        :Bank{"Bank", 0, "City"} {}
+        :Bank{"Bank", 0 , "City"} {}
 
 Bank::Bank(string name)
         :Bank{name, 0, "City"} {}
 
-Bank::Bank(string name, float newTax)
+Bank::Bank(string name, double newTax)
         :Bank{name, newTax, "City"} {}
 
-Bank::Bank(string name, float newTax, string newCity)
+Bank::Bank(string name, double newTax, string newCity)
         :nameofBank{name}, tax{newTax}, city{newCity} {}
-
 
 Bank::~Bank() {}

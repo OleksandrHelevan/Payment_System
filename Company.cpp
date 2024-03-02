@@ -14,4 +14,18 @@ Company::Company(string newName, int avSalary, string spec) {
     this->speciality = spec;
 }
 
+bool Company::operator>(const Company &rhs) {
+    if (this->avarageSalary > rhs.avarageSalary) {
+        return true;
+    }
+    return false;
+}
+
+void Company::CompareCompany(const Company &rhs) {
+    if (this->operator>(rhs))
+        cout<< this->nameofCompany<<"\t"<<this->avarageSalary<<endl;
+    else cout<<rhs.nameofCompany<<"\t"<<rhs.avarageSalary<<endl;
+}
+
+
 Company::~Company() {}

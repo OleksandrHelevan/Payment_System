@@ -7,15 +7,15 @@ using namespace std;
 
 class Bank {
     string nameofBank;
-    float tax;
+    double tax;
     string city;
 
 public:
     void getBank();
     Bank();
     Bank(string name);
-    Bank(string name, float newTax);
-    Bank(string name, float newTax, string newCity);
+    Bank(string name, double newTax);
+    Bank(string name, double newTax, string newCity);
     ~Bank();
 };
 
