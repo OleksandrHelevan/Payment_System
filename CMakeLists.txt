@@ -13,4 +13,13 @@ add_executable(Payment_System main.cpp
         Counter.cpp
         Counter.h
         Account.cpp
-        Account.h)
+        Account.h
+        PersonalAccount.cpp
+        PersonalAccount.h
+        CommercialAccount.cpp
+        CommercialAccount.h
+        PrivatCompany.cpp
+        PrivatCompany.h
+        StateCompany.cpp
+        StateCompany.h
+)

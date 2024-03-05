@@ -4,49 +4,21 @@
 #include "Bank.h"
 #include "Counter.h"
 #include "Account.h"
+#include "PersonalAccount.h"
+#include "CommercialAccount.h"
+#include "PrivatCompany.h"
 
 
 int main() {
     Counter TheCounter;
-    Employee Spider ("Peter", "Parker",
-                     10000,"Spider");
-    Spider.getEmployee();
-    cout<<endl;
-    system("pause");
-    TheCounter.Calculate();
+Bank Mono ("Monobank", 0.1,"Kyiv");
+CommercialAccount Marvel_Account(1,10000.0,0.1,Mono);
+PrivatCompany Marvel ("Marvel",1000,
+                      "movies","Tony","Stark",Marvel_Account);
 
-    Company Marvel ("Marvel");
-    Marvel.getCompany();
-    cout<<endl;
-    system("pause");
-
-    Bank Mono ("Monobank", 0.1);
-    Mono.getBank();
-    cout<<endl;
-    system("pause");
-
-    Employee Spider2 (Spider);
-    Spider.getEmployee();
-    cout<<endl;
-    system("pause");
-    TheCounter.Calculate();
-    cout<<Spider2;
-
-    cout<<"Counter calculate: "<<endl;
-    TheCounter.ShowCounter();
-    cout<<endl;
-    system("pause");;
-
-    Account SpiderAcc(1,1000);
-    SpiderAcc.ShowAcc();
-    Account *Spider2Acc(&SpiderAcc);
-    Spider2Acc->ShowAcc();
-
-
-    Company DC ("DC", 2500,"films");
-    DC.CompareCompany(Marvel);
-
-
+PersonalAccount Spider_Account(1,1000.0,2500.0,Mono);
+Employee Spider("Piter","Parker",5000,
+                "hero",Spider_Account);
 
 
     return 0;
