@@ -10,12 +10,13 @@ class Account {
     double balance;
     Bank bank;
 public:
-    void ShowAcc();
     Account();
     Account(int newnumber);
     Account(int newnumber, double newbalance, Bank thebank);
     Account(Account &other);
     ~Account(){};
+    void getAccaunt();
+    friend ostream &operator<<(ostream &os, const Account &obj);
 };
 
 

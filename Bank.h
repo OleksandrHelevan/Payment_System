@@ -11,12 +11,13 @@ class Bank {
     string city;
 
 public:
-    void getBank();
     Bank();
     Bank(string name);
     Bank(string name, double newTax);
     Bank(string name, double newTax, string newCity);
-    ~Bank();
+    ~Bank(){};
+    void getBank();
+    friend ostream &operator<<(ostream &os, const Bank &obj);
 };
 
 

@@ -6,10 +6,6 @@ using namespace std;
 
 
 
-void Account::ShowAcc() {
-    cout<<number<<" "<<balance<<endl;
-}
-
 Account::Account()
         :Account{ 0 , 0, Bank("Bank",0,"city")}{}
 
@@ -24,3 +20,12 @@ Account::Account(Account &other) {
     this->balance = other.balance;
 }
 
+
+void Account::getAccaunt(){
+    cout<<"Account N"<<number<<"\t"<<"balance: "<<bank;
+}
+
+ostream &operator<<(ostream &os, const Account &obj){
+    os<<"Account N"<<obj.number<<"\t"<<"balance: "<<obj.balance;
+    return os;
+}

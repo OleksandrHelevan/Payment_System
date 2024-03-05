@@ -2,10 +2,6 @@
 #include "Bank.h"
 using namespace std;
 
-void Bank::getBank(){
-    cout <<"Name of Bank: "<< nameofBank << endl <<
-         "Tax = "<< tax << endl <<"City: "<<city;
-}
 
 Bank::Bank()
         :Bank{"Bank", 0 , "City"} {}
@@ -19,4 +15,14 @@ Bank::Bank(string name, double newTax)
 Bank::Bank(string name, double newTax, string newCity)
         :nameofBank{name}, tax{newTax}, city{newCity} {}
 
-Bank::~Bank() {}
+
+
+void Bank::getBank() {
+    cout<<nameofBank<<"\n"<<"Tax: "<<tax<<"\n"<<"City: "<<city<<endl;
+}
+
+ostream &operator<<(ostream &os, const Bank &obj){
+    os<<obj.nameofBank<<"\n"<<"Tax: "<<obj.tax<<"\n"<<"City: "<<obj.city<<endl;
+    return os;
+}
+

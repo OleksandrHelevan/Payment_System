@@ -13,8 +13,6 @@ class Employee {
     PersonalAccount acc;
 
 public:
-    void getEmployee();
-    int getSalary();
     Employee();
     Employee(string newEmployeeName);
     Employee(string newEmployeeName, string newSurname);
@@ -22,9 +20,10 @@ public:
     Employee(string newEmployeeName, string newSurname, int newSalary,
              string newPosition, PersonalAccount Acc);
     ~Employee();
-    Employee(const Employee & other);
-    friend ostream &operator<<( ostream &os, const Employee &obj);
+    Employee(const Employee &other);
     Employee(Employee && other);
+    void getEmployee();
+    friend ostream &operator<<( ostream &os, const Employee &obj);
     };
 
 #endif //PAYMENT_SYSTEM_EMPLOYEE_H

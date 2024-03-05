@@ -1,19 +1,16 @@
 #include <iostream>
 #include "Company.h"
 
-
-void Company::getCompany() {
-    cout<<"Name of company: "<<nameofCompany<<endl<<"Specialization: "<<specialization<<
-        endl<<"Average salary: "<<avarageSalary;
-}
-
 Company::Company()
         :nameofCompany("Name_of_company"),avarageSalary{0},specialization("some_specialization"){}
 
-Company::Company(string newName, double avSalary, string spec) {
-    this->nameofCompany = newName;
-    this->avarageSalary = avSalary;
-    this->specialization = spec;
+Company::Company(string newName, double avSalary, string spec, CommercialAccount Acc)
+    :nameofCompany(newName),avarageSalary(avSalary),specialization(spec),acc(Acc) {}
+
+
+ostream &operator<<(ostream &os, const Company &obj){
+    os<<obj.nameofCompany;
+    return os;
 }
 
 bool Company::operator>(const Company &rhs) {
@@ -36,8 +33,15 @@ Company Company::operator=(const Company &rhs) {
         this->avarageSalary = rhs.avarageSalary;
         this->nameofCompany = rhs.nameofCompany;
         this->specialization = rhs.specialization;
+        this->acc = rhs.acc;
         return *this;
     }
 }
 
-Company::~Company() {}
+void Company::getCompany() {
+    cout<<nameofCompany<<endl<<"Specialization: "<<specialization<<
+        endl<<"Average salary: "<<avarageSalary<<endl;
+}
+void Company::getCompanyAccount() {
+    cout<<acc;
+}

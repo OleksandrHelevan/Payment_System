@@ -6,9 +6,9 @@ class StateCompany :public Company{
 string state;
 public:
     StateCompany();
-    StateCompany(string newName, int avSalary, string spec, string theState);
-    StateCompany operator=(const StateCompany &rhs);//example
+    StateCompany(string newName, int avSalary, string spec, string theState, CommercialAccount Acc);
     ~StateCompany(){};
+    StateCompany operator=(const StateCompany &rhs);//example
 };
 
 

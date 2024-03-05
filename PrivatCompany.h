@@ -6,7 +6,6 @@
 class PrivatCompany : public Company{
 string ownerName;
 string ownerSurname;
-CommercialAccount acc;
 
 public:
     PrivatCompany();
