@@ -11,7 +11,10 @@ public:
     PrivatCompany();
     PrivatCompany(string newName, int avSalary, string spec,
                   string nameofOw, string surnameofOw, CommercialAccount Acc);
-    ~PrivatCompany(){};
+    ~PrivatCompany() override {};
+    void getCompany() override;
+    void CompareCompany(Company &thisComp, Company &other);
+    void Example();//example
 };
 
 

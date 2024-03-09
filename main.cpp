@@ -2,32 +2,31 @@
 #include "Employee.h"
 #include "Company.h"
 #include "Bank.h"
-#include "Counter.h"
 #include "Account.h"
 #include "PersonalAccount.h"
 #include "CommercialAccount.h"
 #include "PrivatCompany.h"
+#include "StateCompany.h"
 
 
 int main() {
-    Counter TheCounter;
-Bank Mono ("Monobank", 0.1,"Kyiv");
-CommercialAccount Marvel_Account(1,10000.0,0.1,Mono);
-PrivatCompany Marvel ("Marvel",1000,
-                      "movies","Tony","Stark",Marvel_Account);
+    Bank Mono("Mono",0.1,"Kyiv");
+    CommercialAccount Marvel_Account(1,120000.0,0.15,Mono);
+    Company *Marvel = new PrivatCompany("Marvel",1000,"movie",
+                                        "Tony","Stark",Marvel_Account);
+    Marvel->Example();
+    cout<<endl;
+    system("pause");
+    Marvel->getCompany();
+    system("pause");
+    Marvel_Account.getAccount();
+    system("pause");
+    ;
 
-PersonalAccount Spider_Account(2,1000.0,2500.0,Mono);
-Employee Spider("Piter","Parker",5000,
-                "hero",Spider_Account);
-
-Mono.getBank();
-    system("pause");
-Marvel_Account.getAccaunt();
-    system("pause");
-Marvel.getCompany();
-    system("pause");
-Spider_Account.getAccaunt();
-    system("pause");
-Spider.getEmployee();
+PrivatCompany DC("DC",15000,"movie","Ivan",
+                 "Mask",Marvel_Account);
+Company Sony ("Sony",12000,"movie",Marvel_Account);
+DC.CompareCompany(DC,Sony);
+Sony.CompareCompany(DC);
     return 0;
 }

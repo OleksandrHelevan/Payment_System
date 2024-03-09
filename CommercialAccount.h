@@ -8,7 +8,9 @@ public:
     CommercialAccount();
     CommercialAccount(int thenumber, double thebalance, double theTax, Bank thebank);
     CommercialAccount(CommercialAccount &other);
-    ~CommercialAccount(){};
+    ~CommercialAccount() override {};
+    void getAccount() override;
+    void getBank() override;
 };
 
 

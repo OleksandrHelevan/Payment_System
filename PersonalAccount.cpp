@@ -11,5 +11,12 @@ PersonalAccount::PersonalAccount(int thenumber, double thebalance, double thelim
 PersonalAccount::PersonalAccount(PersonalAccount &other)
     : Account(other), limit{other.limit}{}
 
+void PersonalAccount::getAccount() {
+    Account::getAccount();
+    cout<<"Limit for this account: "<<limit;
+}
+void PersonalAccount::getBank() {
+    Account::getBank();
+}
 
 

@@ -12,13 +12,14 @@ class Company {
 public:
     Company();
     Company(string newName, double avSalary, string spec, CommercialAccount Acc);
-    Company operator=(const Company &rhs);//example
-    ~Company(){};
-    void getCompany();
+    Company operator=(const Company &rhs);
+    virtual ~Company(){};
+    virtual void getCompany();
     friend ostream &operator<<(ostream &os, const Company &obj);
     bool operator>(const Company &rhs);
     void CompareCompany(const Company &rhs);
     void getCompanyAccount();
+    void Example();//example
 
 };
 

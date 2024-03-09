@@ -10,3 +10,11 @@ CommercialAccount::CommercialAccount(int thenumber, double thebalance, double th
 CommercialAccount::CommercialAccount(CommercialAccount &other)
     : Account(other),compTax{other.compTax}{}
 
+void CommercialAccount::getAccount(){
+    Account::getAccount();
+    cout<<"Tax for this company:"<<compTax<<endl;
+}
+void CommercialAccount::getBank() {
+    Account::getBank();
+}
+

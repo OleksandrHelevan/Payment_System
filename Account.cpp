@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include "Account.h"
 using namespace std;
@@ -21,11 +19,15 @@ Account::Account(Account &other) {
 }
 
 
-void Account::getAccaunt(){
-    cout<<"Account N"<<number<<"\t"<<"balance: "<<bank;
+void Account::getAccount(){
+    cout<<"Account N"<<number<<"\t"<<"balance: "<<balance<<endl;
 }
 
 ostream &operator<<(ostream &os, const Account &obj){
-    os<<"Account N"<<obj.number<<"\t"<<"balance: "<<obj.balance;
+    os<<"Account N"<<obj.number<<"\t"<<"balance: "<<obj.balance<<endl;
     return os;
+}
+
+void Account::getBank() {
+    cout<<bank;
 }

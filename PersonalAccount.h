@@ -10,7 +10,9 @@ public:
     PersonalAccount();
     PersonalAccount(PersonalAccount &other);
     PersonalAccount(int thenumber, double thebalance,double thelimit, Bank thebank);
-    ~PersonalAccount(){};
+    ~PersonalAccount() override {};
+    void getAccount() override;
+    void getBank() override;
 };
 
 

@@ -10,8 +10,6 @@ add_executable(Payment_System main.cpp
         Company.h
         Employee.cpp
         Employee.h
-        Counter.cpp
-        Counter.h
         Account.cpp
         Account.h
         PersonalAccount.cpp

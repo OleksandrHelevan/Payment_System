@@ -22,8 +22,10 @@ bool Company::operator>(const Company &rhs) {
 
 void Company::CompareCompany(const Company &rhs) {
     if (this->operator>(rhs))
-        cout<< this->nameofCompany<<"\t"<<this->avarageSalary<<endl;
-    else cout<<rhs.nameofCompany<<"\t"<<rhs.avarageSalary<<endl;
+        cout<<this->nameofCompany<<" Company has higher salary: "<<this->avarageSalary<<
+        " then "<<rhs.nameofCompany<<": "<<rhs.avarageSalary<<endl;
+    else cout<<rhs.nameofCompany<<" Company has higher salary: "<<rhs.avarageSalary<<
+             " then "<< this->nameofCompany<<": "<<this->avarageSalary<<endl;
 }
 
 Company Company::operator=(const Company &rhs) {
@@ -44,4 +46,8 @@ void Company::getCompany() {
 }
 void Company::getCompanyAccount() {
     cout<<acc;
+}
+
+void Company::Example(){
+    cout<<"Base Company example method";//example
 }

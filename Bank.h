@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-class Bank {
+class Bank final {
     string nameofBank;
     double tax;
     string city;

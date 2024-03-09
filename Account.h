@@ -14,9 +14,11 @@ public:
     Account(int newnumber);
     Account(int newnumber, double newbalance, Bank thebank);
     Account(Account &other);
-    ~Account(){};
-    void getAccaunt();
+    virtual ~Account(){}
+    virtual void getAccount();
+    virtual void getBank();
     friend ostream &operator<<(ostream &os, const Account &obj);
+
 };
 
 
