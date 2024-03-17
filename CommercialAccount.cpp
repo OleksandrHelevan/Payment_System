@@ -18,3 +18,7 @@ void CommercialAccount::getBank() {
     Account::getBank();
 }
 
+double CommercialAccount::getTax() {
+    return compTax;
+}
+

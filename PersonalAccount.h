@@ -13,6 +13,7 @@ public:
     ~PersonalAccount() override {};
     void getAccount() override;
     void getBank() override;
+    double getLimit();
 };
 
 

@@ -19,4 +19,8 @@ void PersonalAccount::getBank() {
     Account::getBank();
 }
 
+double PersonalAccount::getLimit() {
+    return limit;
+}
+
 

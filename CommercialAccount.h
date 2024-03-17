@@ -11,6 +11,7 @@ public:
     ~CommercialAccount() override {};
     void getAccount() override;
     void getBank() override;
+    double getTax();
 };
 
 

@@ -24,7 +24,7 @@ void Account::getAccount(){
 }
 
 ostream &operator<<(ostream &os, const Account &obj){
-    os<<"Account N"<<obj.number<<"\t"<<"balance: "<<obj.balance<<endl;
+    os<<"Account N"<<obj.number<<"\t"<<"balance: "<<obj.balance;
     return os;
 }
 
