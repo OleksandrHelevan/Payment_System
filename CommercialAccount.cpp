@@ -12,7 +12,7 @@ CommercialAccount::CommercialAccount(CommercialAccount &other)
 
 void CommercialAccount::getAccount(){
     Account::getAccount();
-    cout<<"Tax for this company:"<<compTax<<endl;
+    cout<<"Tax for this company: "<<compTax<<endl;
 }
 void CommercialAccount::getBank() {
     Account::getBank();

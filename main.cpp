@@ -7,26 +7,38 @@
 #include "CommercialAccount.h"
 #include "PrivatCompany.h"
 #include "StateCompany.h"
+#include <memory>
+#include <fstream>
+
 
 
 int main() {
-    Bank Mono("Mono",0.1,"Kyiv");
-    CommercialAccount Marvel_Account(1,120000.0,0.15,Mono);
-    Company *Marvel = new PrivatCompany("Marvel",1000,"movie",
-                                        "Tony","Stark",Marvel_Account);
-    Marvel->Example();
-    cout<<endl;
-    system("pause");
-    Marvel->getCompany();
-    system("pause");
-    Marvel_Account.getAccount();
-    system("pause");
-    ;
+    cout<<"Welcome to the Banker!"<<endl<<endl;
+    cout<<"Choose who you  are: "<<endl<<"Enter 1 if you are the Admin"
+    <<endl<<"Enter 2 if you are the User"<<endl;
+    int init;
+    cin>>init;
+    Bank Banker("Banker",0.1,"Chernivtsi");
+    if(init == 1)   //for Admin
+    {
+        string password;
+        cout<<"Enter the password"<<endl;
+        cin>>password;
+        if(password=="IPZ")
+        {
+            cout<<"Chose what do you want:"<<endl;
+            cout<<"A - to make account"<<endl;
+            cout<<"C - to add Company"<<endl;
+            cout<<"E - to add Employee"<<endl;
 
-PrivatCompany DC("DC",15000,"movie","Ivan",
-                 "Mask",Marvel_Account);
-Company Sony ("Sony",12000,"movie",Marvel_Account);
-DC.CompareCompany(DC,Sony);
-Sony.CompareCompany(DC);
+        }
+        else{
+            cout<<"Sorry but you entered wrong password";
+        }
+    }
+
+    else{   //for user
+        cout<<"Hello user";
+    }
     return 0;
 }
