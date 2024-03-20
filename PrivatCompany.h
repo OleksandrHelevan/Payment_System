@@ -9,10 +9,12 @@ string ownerSurname;
 
 public:
     PrivatCompany();
-    PrivatCompany(string newName, int avSalary, string spec,
+    PrivatCompany(string newName, double avSalary, string spec,
                   string nameofOw, string surnameofOw, CommercialAccount Acc);
     ~PrivatCompany() override {};
     void getCompany() override;
+    string getOwnerN();
+    string getOwnerS();
     void CompareCompany(Company &thisComp, Company &other);
     void Example();//example
 };

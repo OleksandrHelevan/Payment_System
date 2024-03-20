@@ -9,7 +9,7 @@ class Employee{
     static int counter;
     string emloyeeName;
     string surname;
-    int salary;
+    double salary;
     string position;
     PersonalAccount acc;
 
@@ -17,8 +17,8 @@ public:
     Employee();
     Employee(string newEmployeeName);
     Employee(string newEmployeeName, string newSurname);
-    Employee(string newEmployeeName, string newSurname, int newSalary);
-    Employee(string newEmployeeName, string newSurname, int newSalary,
+    Employee(string newEmployeeName, string newSurname, double newSalary);
+    Employee(string newEmployeeName, string newSurname, double newSalary,
              string newPosition, PersonalAccount Acc);
     ~Employee();
     Employee(const Employee &other);

@@ -11,6 +11,7 @@ PersonalAccount::PersonalAccount(int thenumber, double thebalance, double thelim
 PersonalAccount::PersonalAccount(PersonalAccount &other)
     : Account(other), limit{other.limit}{}
 
+
 void PersonalAccount::getAccount() {
     Account::getAccount();
     cout<<"Limit for this account: "<<limit;
@@ -22,5 +23,12 @@ void PersonalAccount::getBank() {
 double PersonalAccount::getLimit() {
     return limit;
 }
-
+istream &operator>>(istream &is, PersonalAccount &obj){
+        int *num;
+        is>>*num;
+        double *bal;
+        is>>*bal;
+        double *lim;
+        is>>*lim;
+}
 

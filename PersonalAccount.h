@@ -11,9 +11,11 @@ public:
     PersonalAccount(PersonalAccount &other);
     PersonalAccount(int thenumber, double thebalance,double thelimit, Bank thebank);
     ~PersonalAccount() override {};
+    PersonalAccount operator=(const PersonalAccount &rhs);
     void getAccount() override;
     void getBank() override;
     double getLimit();
+    friend istream &operator>>(istream &is, PersonalAccount &obj);
 };
 
 

@@ -17,10 +17,15 @@ StateCompany::StateCompany(string newName, int avSalary, string spec, string the
 //    }
 //}
 
+string StateCompany::getState() {
+    return state;
+}
+
 void StateCompany::getCompany(){
     Company::getCompany();
     cout<<"State: "<<state<<endl;
 }
+
 
 void  StateCompany::CompareCompany(Company &thisComp, Company &other) {
     thisComp.Company::CompareCompany(other);

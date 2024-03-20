@@ -10,6 +10,7 @@ public:
     ~StateCompany() override {};
 //    StateCompany operator=(const StateCompany &rhs);
     void getCompany() override;
+    string getState();
     void CompareCompany(Company &thisComp, Company &other);
 
 };

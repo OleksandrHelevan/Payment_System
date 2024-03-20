@@ -14,13 +14,13 @@ Employee::Employee(string newEmployeeName, string newSurname) {
     surname = newSurname;
     operator++();
 }
-Employee::Employee(string newEmployeeName, string newSurname, int newSalary) {
+Employee::Employee(string newEmployeeName, string newSurname, double newSalary) {
     emloyeeName = newEmployeeName;
     surname = newSurname;
     salary = newSalary;
     operator++();
 }
-Employee::Employee(string newEmployeeName,string newSurname, int newSalary,
+Employee::Employee(string newEmployeeName,string newSurname, double newSalary,
                    string newPosition,PersonalAccount Acc): emloyeeName(newEmployeeName),
                    surname(newSurname),salary(newSalary),position(newPosition),acc(Acc) {operator++();}
 
@@ -35,8 +35,7 @@ void Employee::getEmployee(){
 }
 
 ostream &operator<<(ostream &os,const Employee &obj ){
-    os<<obj.emloyeeName<<" "<<obj.surname<<endl<<
-      "position: "<<obj.position<<"\t"<<"Salary: "<<obj.salary<<endl;
+    os<<obj.emloyeeName<<" "<<obj.surname<<"\t"<<"salary: "<<obj.salary<<"\t"<<"position: "<<obj.position<<endl;
     return os;
 }
 

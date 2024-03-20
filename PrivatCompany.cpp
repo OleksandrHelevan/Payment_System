@@ -5,7 +5,7 @@ using namespace std;
 PrivatCompany::PrivatCompany()
     :Company(),ownerName("Name_of_owner"),ownerSurname("Surname_of_owner"){}
 
-    PrivatCompany::PrivatCompany(string newName, int avSalary,
+    PrivatCompany::PrivatCompany(string newName, double avSalary,
                                  string spec, string nameofOw,string surnameofOw, CommercialAccount Acc)
                   : Company(newName,avSalary,spec,Acc), ownerName(nameofOw),ownerSurname(surnameofOw){}
 
@@ -18,4 +18,12 @@ void PrivatCompany::getCompany(){
 }
 void PrivatCompany::CompareCompany(Company &thisComp, Company &other) {
     thisComp.Company::CompareCompany(other);
+}
+
+string PrivatCompany::getOwnerN() {
+    return ownerName;
+}
+
+string PrivatCompany::getOwnerS() {
+    return ownerSurname;
 }

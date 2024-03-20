@@ -13,6 +13,7 @@ public:
     Account();
     Account(int newnumber);
     Account(int newnumber, double newbalance, Bank thebank);
+    Account(int newnumber, double newbalance);
     Account(Account &other);
     virtual ~Account(){}
     virtual void getAccount() = 0;
