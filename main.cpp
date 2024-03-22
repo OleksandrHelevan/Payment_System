@@ -11,9 +11,8 @@
 #include <fstream>
 #include <vector>
 
-ifstream finA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\AccountList.txt)");
-ifstream finC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\CompanyList.txt)");
-ifstream finE (R"(C:\Users\Admin\Desktop\Payment_System\Lists2\EmployeeList.txt)");
+//ifstream finA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\AccountList.txt)");
+//ifstream finC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\CompanyList.txt)");
 
 void AddPrivateCompany(Bank &bank){
     cout<<"You want to add private company"<<endl<<endl;
@@ -24,9 +23,10 @@ void AddPrivateCompany(Bank &bank){
     shared_ptr <double> bal {new double {0}};
     shared_ptr <double> tax  {new double {0.1}};
     CommercialAccount Acc (*num,*bal,*tax,bank);
-    ofstream foutA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\AccountList.txt)",ios_base::app);
-    foutA << Acc <<"\t"<<"tax: "<<Acc.getTax()<<endl;
-    foutA.close();
+    ofstream foutCA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Commercial_Account_List.txt)",
+                     ios_base::app);
+    foutCA << Acc <<"\t"<<Acc.getTax()<<endl;
+    foutCA.close();
 
     shared_ptr <string> name {new string {""}};
     cout<<"Enter name of private company"<<endl;
@@ -45,8 +45,10 @@ void AddPrivateCompany(Bank &bank){
     cin>>*owSurname;
 
     PrivatCompany PrivComp (*name,*sal,*spec,*owName,*owSurname,Acc);
-    ofstream foutC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\CompanyList.txt)",ios_base::app);
-    foutC<<PrivComp<<"\t"<<"Owner: "<<PrivComp.getOwnerN()<<" "<<PrivComp.getOwnerS()<<endl;
+    ofstream foutPC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Private_Company_List.txt)",
+                     ios_base::app);
+    foutPC<<PrivComp<<"\t"<<PrivComp.getOwnerN()<<" "<<PrivComp.getOwnerS()<<"\t"<<*num<<endl;
+    foutPC.close();
 }
 
 void AddStateCompany(Bank &bank){
@@ -58,14 +60,15 @@ void AddStateCompany(Bank &bank){
     shared_ptr <double> bal {new double {0}};
     shared_ptr <double> tax  {new double {0.1}};
     CommercialAccount Acc (*num,*bal,*tax,bank);
-    ofstream foutA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\AccountList.txt)",ios_base::app);
-    foutA <<Acc<<"\t"<<"tax:"<<Acc.getTax()<<endl;
-    foutA.close();
+    ofstream foutCA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Commercial_Account_List.txt)",
+                     ios_base::app);
+    foutCA <<Acc<<"\t"<<Acc.getTax()<<endl;
+    foutCA.close();
 
     shared_ptr <string> name {new string {""}};
     cout<<"Enter name of state company"<<endl;
     cin>>*name;
-    shared_ptr <double> sal {new double {0}};
+    shared_ptr <double> sal {new double {0.0}};
     cout<<"Enter employee`s salary in state company"<<endl;
     cin>>*sal;
     shared_ptr <string> spec {new string {""}};
@@ -76,9 +79,9 @@ void AddStateCompany(Bank &bank){
     cin>>*state;
 
     StateCompany StateComp (*name,*sal,*spec,*state,Acc);
-    ofstream foutC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\CompanyList.txt)",ios_base::app);
-    foutC<<StateComp<<"\t"<<"state: "<<StateComp.getState()<<endl;
-    foutC.close();
+    ofstream foutSC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\State_Company_List.txt)",ios_base::app);
+    foutSC<<StateComp<<"\t"<<StateComp.getState()<<"\t"<<*num<<endl;
+    foutSC.close();
 }
 
 
@@ -90,9 +93,10 @@ void AddEmployee(Bank &bank){
     shared_ptr <double> bal {new double {0}};
     shared_ptr <double> lim  {new double {10000}};
     PersonalAccount Acc (*num,*bal,*lim,bank);
-    ofstream foutA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\AccountList.txt)",ios_base::app);
-    foutA <<Acc<<"\t"<<"Limit:"<<Acc.getLimit()<<endl;
-    foutA.close();
+    ofstream foutPA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)",
+                    ios_base::app);
+    foutPA <<Acc<<"\t"<<Acc.getLimit()<<endl;
+    foutPA.close();
 
     shared_ptr<string> name {new string {""}};
     cout<<"Enter name of employee"<<endl;
@@ -108,10 +112,29 @@ void AddEmployee(Bank &bank){
     cin>>*pos;
 
     Employee Emp (*name,*surname,*salary,*pos,Acc);
-    ofstream foutE (R"(C:\Users\Admin\Desktop\Payment_System\Lists\EmployeeList.txt)",ios_base::app);
-    foutE<<Emp;
+    ofstream foutE (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)",ios_base::app);
+    foutE<<Emp<<"\t"<<*num;
     foutE.close();
-};
+}
+
+void ReadEmployeesFromFile() {
+    ifstream finE(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)");
+    if (!finE.is_open()) {
+        cerr << "Error opening file: " << endl;
+    }
+
+    shared_ptr <string> name{new string {""}};
+    shared_ptr <string> surname{new string {""}};
+    shared_ptr <string> position{new string {""}};
+    shared_ptr <int> salary{new int {0}};
+    shared_ptr <int> numofAcc{new int{0}};
+    while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
+        cout << *name <<" "<< *surname << "\t" << *salary << "\t" << *position<< endl;
+    }
+
+    finE.close();
+}
+
 
 int main() {
     Bank Banker("Banker",0.1,"Chernivtsi");
@@ -127,16 +150,17 @@ int main() {
         cin>>password;
         if(password=="IPZ")
         {
-            while(1) {
+            while(true) {
                 cout << "Chose what do you want:" << endl;
                 cout << "A - to add PRIVATE COMPANY" << endl;
                 cout << "B - to add STATE COMPANY" << endl;
                 cout << "C - to add EMPLOYEE" << endl;
+                cout <<"D - to show list of Employee" << endl;
                 cout << "Q - if you want to stop" << endl;
                 char choice;
                 cin >> choice;
                 try {
-                    if (choice!='A'&&choice!='B'&&choice!='C'&&choice!='Q' )
+                    if (choice!='A' && choice!='B' && choice!='C' && choice!='Q' && choice!='D' )
                         throw 0;
                     switch (choice) {
                         case 'A': {  //add private company
@@ -152,7 +176,12 @@ int main() {
                             AddEmployee(Banker);
                             break;
                         }
+                        case 'D':{  //show employees
+                            ReadEmployeesFromFile();
+                            break;
+                        }
                         case 'Q': {
+
                             return 0;
                         }
                     }
@@ -171,5 +200,6 @@ int main() {
     else{   //for user
         cout<<"Hello user";
     }
+ReadEmployeesFromFile();
     return 0;
 }

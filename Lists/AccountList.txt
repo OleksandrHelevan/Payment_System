@@ -1,9 +1,0 @@
-Account N1	balance: 0	Limit:10000
-Account N2	balance: 0	tax: 0.1
-Account N3	balance: 0	Limit:10000
-Account N1	balance: 0	tax: 0.1
-Account N5	balance: 0	Limit:10000
-Account N21	balance: 0	Limit:10000
-Account N3	balance: 0	Limit:10000
-Account N5	balance: 0	Limit:10000
-Account N6	balance: 0	Limit:10000

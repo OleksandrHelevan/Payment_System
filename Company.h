@@ -18,9 +18,6 @@ public:
     friend ostream &operator<<(ostream &os, const Company &obj);
     bool operator>(const Company &rhs);
     void CompareCompany(const Company &rhs);
-    void getCompanyAccount();
-    void Example();//example
-
 };
 
 #endif //PAYMENT_SYSTEM_COMPANY_H

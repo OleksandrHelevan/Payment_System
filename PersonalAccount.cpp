@@ -23,12 +23,4 @@ void PersonalAccount::getBank() {
 double PersonalAccount::getLimit() {
     return limit;
 }
-istream &operator>>(istream &is, PersonalAccount &obj){
-        int *num;
-        is>>*num;
-        double *bal;
-        is>>*bal;
-        double *lim;
-        is>>*lim;
-}
 

@@ -8,7 +8,6 @@ public:
     StateCompany();
     StateCompany(string newName, int avSalary, string spec, string theState, CommercialAccount Acc);
     ~StateCompany() override {};
-//    StateCompany operator=(const StateCompany &rhs);
     void getCompany() override;
     string getState();
     void CompareCompany(Company &thisComp, Company &other);

@@ -9,9 +9,7 @@ PrivatCompany::PrivatCompany()
                                  string spec, string nameofOw,string surnameofOw, CommercialAccount Acc)
                   : Company(newName,avSalary,spec,Acc), ownerName(nameofOw),ownerSurname(surnameofOw){}
 
-void PrivatCompany::Example(){
-    cout<<"Derived PrivatCompany example method";//example
-}
+
 void PrivatCompany::getCompany(){
     Company::getCompany();
     cout<<"Owner: "<<ownerName<<" "<<ownerSurname<<endl;

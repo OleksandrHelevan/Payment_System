@@ -9,7 +9,7 @@ Company::Company(string newName, double avSalary, string spec, CommercialAccount
 
 
 ostream &operator<<(ostream &os, const Company &obj){
-    os<<obj.nameofCompany;
+    os<<obj.nameofCompany<<"\t"<<obj.avarageSalary<<"\t"<<obj.specialization<<"\t";
     return os;
 }
 
@@ -43,11 +43,4 @@ Company Company::operator=(const Company &rhs) {
 void Company::getCompany() {
     cout<<nameofCompany<<endl<<"Specialization: "<<specialization<<
         endl<<"Average salary: "<<avarageSalary<<endl;
-}
-void Company::getCompanyAccount() {
-    cout<<acc;
-}
-
-void Company::Example(){
-    cout<<"Base Company example method";//example
 }

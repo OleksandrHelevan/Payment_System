@@ -21,7 +21,7 @@ Employee::Employee(string newEmployeeName, string newSurname, double newSalary) 
     operator++();
 }
 Employee::Employee(string newEmployeeName,string newSurname, double newSalary,
-                   string newPosition,PersonalAccount Acc): emloyeeName(newEmployeeName),
+                   string newPosition, PersonalAccount Acc): emloyeeName(newEmployeeName),
                    surname(newSurname),salary(newSalary),position(newPosition),acc(Acc) {operator++();}
 
 
@@ -35,7 +35,7 @@ void Employee::getEmployee(){
 }
 
 ostream &operator<<(ostream &os,const Employee &obj ){
-    os<<obj.emloyeeName<<" "<<obj.surname<<"\t"<<"salary: "<<obj.salary<<"\t"<<"position: "<<obj.position<<endl;
+    os<<obj.emloyeeName<<" "<<obj.surname<<"\t"<<obj.salary<<"\t"<<obj.position<<endl;
     return os;
 }
 

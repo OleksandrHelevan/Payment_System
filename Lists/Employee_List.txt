@@ -1,0 +1,3 @@
+Oleksandr Helevan 	10000 	director	1
+Ivan Buryak	10000	boy	2
+

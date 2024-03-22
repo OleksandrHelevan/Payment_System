@@ -16,7 +16,6 @@ public:
     string getOwnerN();
     string getOwnerS();
     void CompareCompany(Company &thisComp, Company &other);
-    void Example();//example
 };
 
 
