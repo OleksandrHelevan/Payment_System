@@ -15,7 +15,10 @@ public:
     void getAccount() override;
     void getBank() override;
     double getLimit();
+    void Sendmoney(double amount, Account &other);
     friend istream &operator>>(istream &is, PersonalAccount &obj);
+    void sendMoney(double amount, int number) override;
+    void addMoney(double amount, int number) override;
 };
 
 

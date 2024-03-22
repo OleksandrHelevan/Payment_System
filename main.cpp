@@ -11,8 +11,10 @@
 #include <fstream>
 #include <vector>
 
-//ifstream finA (R"(C:\Users\Admin\Desktop\Payment_System\Lists\AccountList.txt)");
-//ifstream finC (R"(C:\Users\Admin\Desktop\Payment_System\Lists\CompanyList.txt)");
+void Shtrix(){
+    cout<<endl<<"--------------------------"<<endl;
+};
+
 
 void AddPrivateCompany(Bank &bank){
     cout<<"You want to add private company"<<endl<<endl;
@@ -84,7 +86,6 @@ void AddStateCompany(Bank &bank){
     foutSC.close();
 }
 
-
 void AddEmployee(Bank &bank){
     cout << "You must to create personal account" << endl;
     shared_ptr <int> num{new int {0}};
@@ -135,12 +136,34 @@ void ReadEmployeesFromFile() {
     finE.close();
 }
 
+bool IsEmpInFile(string nameEm, string surnameEm){
+    ifstream finE(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)");
+    if (!finE.is_open()) {
+        cerr << "Error opening file: " << endl;
+    }
+
+    shared_ptr <string> name{new string {""}};
+    shared_ptr <string> surname{new string {""}};
+    shared_ptr <string> position{new string {""}};
+    shared_ptr <int> salary{new int {0}};
+    shared_ptr <int> numofAcc{new int{0}};
+    while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
+        if(nameEm == *name && surnameEm == *surname) {
+            finE.close();
+            return true;
+        }
+    }
+    finE.close();
+    return false;
+}
+
 
 int main() {
     Bank Banker("Banker",0.1,"Chernivtsi");
     cout<<"Welcome to the Banker!"<<endl<<endl;
     cout<<"Choose who you are: "<<endl<<"Enter 1 if you are the Admin"
-    <<endl<<"Enter 2 if you are the User"<<endl;
+    <<endl<<"Enter 2 if you are the User";
+    Shtrix();
     int init;
     cin>>init;
     if(init == 1)   //for Admin
@@ -151,12 +174,14 @@ int main() {
         if(password=="IPZ")
         {
             while(true) {
+                Shtrix();
                 cout << "Chose what do you want:" << endl;
                 cout << "A - to add PRIVATE COMPANY" << endl;
                 cout << "B - to add STATE COMPANY" << endl;
                 cout << "C - to add EMPLOYEE" << endl;
                 cout <<"D - to show list of Employee" << endl;
-                cout << "Q - if you want to stop" << endl;
+                cout << "press Q - if you want to stop";
+                Shtrix();
                 char choice;
                 cin >> choice;
                 try {
@@ -198,8 +223,27 @@ int main() {
     }
 
     else{   //for user
+        Shtrix();
         cout<<"Hello user";
+        Shtrix();
+        cout<<"You need to authorize"<<endl;
+        cout<<"Enter your name: "<<endl;
+        shared_ptr <string> name{new string {""}};
+        cin>>*name;
+        cout<<"Enter your surname:"<<endl;
+        shared_ptr <string> surname{new string {""}};
+        cin>>*surname;
+        if(IsEmpInFile(*name,*surname)){
+            Shtrix();
+            cout << "Chose what do you want:" << endl;
+            cout << "A - to make transaction" << endl;
+            cout << "B - view payment history" << endl;
+            cout << "C - " << endl;
+            cout <<"D - to " << endl;
+            cout << "press Q - if you want to stop";
+            Shtrix();
+        }
     }
-ReadEmployeesFromFile();
+
     return 0;
 }

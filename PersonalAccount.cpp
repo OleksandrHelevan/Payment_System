@@ -20,7 +20,18 @@ void PersonalAccount::getBank() {
     Account::getBank();
 }
 
+void PersonalAccount::sendMoney(double amount, int number) {
+    if(amount<=limit)
+        Account::sendMoney(amount,number);
+    else
+        cerr<<"Not enough money";
+}
+
 double PersonalAccount::getLimit() {
     return limit;
+}
+
+void PersonalAccount::addMoney(double amount, int number) {
+    Account::addMoney(amount,number);
 }
 

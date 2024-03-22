@@ -35,7 +35,7 @@ void Employee::getEmployee(){
 }
 
 ostream &operator<<(ostream &os,const Employee &obj ){
-    os<<obj.emloyeeName<<" "<<obj.surname<<"\t"<<obj.salary<<"\t"<<obj.position<<endl;
+    os<<obj.emloyeeName<<" "<<obj.surname<<"\t"<<obj.salary<<"\t"<<obj.position;
     return os;
 }
 

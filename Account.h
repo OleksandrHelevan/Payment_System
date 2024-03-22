@@ -18,7 +18,10 @@ public:
     virtual ~Account(){}
     virtual void getAccount() = 0;
     virtual void getBank() = 0;
+    virtual void sendMoney(double amount, int number);
+    virtual void addMoney(double amount, int number);
     friend ostream &operator<<(ostream &os, const Account &obj);
+
 
 };
 

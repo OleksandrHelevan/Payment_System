@@ -34,3 +34,11 @@ ostream &operator<<(ostream &os, const Account &obj){
 void Account::getBank() {
     cout<<bank;
 }
+
+void Account::sendMoney(double amount, int number) {
+    balance-=amount;
+}
+
+void Account::addMoney(double amount, int number) {
+    balance+=amount;
+}

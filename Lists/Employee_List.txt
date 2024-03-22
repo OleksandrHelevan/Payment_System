@@ -1,3 +1,2 @@
-Oleksandr Helevan 	10000 	director	1
-Ivan Buryak	10000	boy	2
-
+Oleksandr Helevan	10000 	director	2
+Vova Zankovskiy		1000	programmer	1

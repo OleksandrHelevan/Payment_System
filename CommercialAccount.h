@@ -12,6 +12,8 @@ public:
     void getAccount() override;
     void getBank() override;
     double getTax();
+    void sendMoney(double amount, int number)override;
+    void addMoney(double amount, int number)override;
 };
 
 
