@@ -35,10 +35,10 @@ void Account::getBank() {
     cout<<bank;
 }
 
-void Account::sendMoney(double amount, int number) {
+void Account::takeMoney(double amount) {
     balance-=amount;
 }
 
-void Account::addMoney(double amount, int number) {
+void Account::addMoney(double amount) {
     balance+=amount;
 }

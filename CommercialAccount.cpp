@@ -18,16 +18,16 @@ void CommercialAccount::getBank() {
     Account::getBank();
 }
 
-void CommercialAccount::sendMoney(double amount, int number) {
-    Account::sendMoney(amount,number);
+void CommercialAccount::takeMoney(double amount) {
+    Account::takeMoney(amount);
 }
 
 double CommercialAccount::getTax() {
     return compTax;
 }
 
-void CommercialAccount::addMoney(double amount, int number) {
+void CommercialAccount::addMoney(double amount) {
     double totalamount = amount - amount*compTax;
-    Account::addMoney(totalamount,number);
+    Account::addMoney(totalamount);
 }
 

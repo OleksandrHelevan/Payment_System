@@ -18,12 +18,11 @@ public:
     virtual ~Account(){}
     virtual void getAccount() = 0;
     virtual void getBank() = 0;
-    virtual void sendMoney(double amount, int number);
-    virtual void addMoney(double amount, int number);
+    virtual void takeMoney(double amount);
+    virtual void addMoney(double amount);
     friend ostream &operator<<(ostream &os, const Account &obj);
-
-
 };
+
 
 
 #endif //PAYMENT_SYSTEM_ACCOUNT_H

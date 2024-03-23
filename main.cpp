@@ -11,6 +11,8 @@
 #include <fstream>
 #include <vector>
 
+Bank Banker("Banker",0.1,"Chernivtsi");
+
 void Shtrix(){
     cout<<endl<<"--------------------------"<<endl;
 };
@@ -86,6 +88,9 @@ void AddStateCompany(Bank &bank){
     foutSC.close();
 }
 
+
+
+
 void AddEmployee(Bank &bank){
     cout << "You must to create personal account" << endl;
     shared_ptr <int> num{new int {0}};
@@ -141,31 +146,177 @@ bool IsEmpInFile(string nameEm, string surnameEm){
     if (!finE.is_open()) {
         cerr << "Error opening file: " << endl;
     }
+    else {
+        shared_ptr<string> name{new string{""}};
+        shared_ptr<string> surname{new string{""}};
+        shared_ptr<string> position{new string{""}};
+        shared_ptr<int> salary{new int{0}};
+        shared_ptr<int> numofAcc{new int{0}};
+        while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
+            if (nameEm == *name && surnameEm == *surname) {
+                finE.close();
+                return true;
+            }
+        }
+        finE.close();
+        return false;
+    }
+}
 
-    shared_ptr <string> name{new string {""}};
-    shared_ptr <string> surname{new string {""}};
-    shared_ptr <string> position{new string {""}};
-    shared_ptr <int> salary{new int {0}};
-    shared_ptr <int> numofAcc{new int{0}};
-    while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
-        if(nameEm == *name && surnameEm == *surname) {
+void Withdraw(string nameE, string surnameE,double amount){
+    if(IsEmpInFile(nameE,surnameE)) {
+        ifstream finE(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)");
+        if (!finE.is_open()) {
+            cerr << "Error opening file: " << endl;
+        } else {
+            shared_ptr<string> name{new string{""}};
+            shared_ptr<string> surname{new string{""}};
+            shared_ptr<string> position{new string{""}};
+            shared_ptr<int> salary{new int{0}};
+            shared_ptr<int> numofAcc{new int{0}};
+            while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
+                if (nameE == *name && surnameE == *surname) {
+                    finE.close();
+                    ifstream finPA(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
+                    if(!finPA.is_open())
+                        cerr<<"ERROR";
+                    else{
+                        shared_ptr<int> number{new int{0}};
+                        shared_ptr<double> balance{new double {0}};
+                        shared_ptr<double> limit{new double {0}};
+                        while (finPA >> *number >> *balance >> *limit) {
+                            if (*numofAcc == *number) {
+                                finPA.close();
+                            }
+                            PersonalAccount Acc(*number, *balance, *limit, Banker);
+                            Acc.takeMoney(amount);
+                            vector<int> numbers;
+                            vector<double> balances;
+                            vector<double> limits;
+                            ifstream finPA
+                            (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
+                            if (!finPA.is_open())
+                                cerr << "ERROR";
+                            else {
+                                while (finPA >> *number >> *balance >> *limit) {
+                                    numbers.push_back(*number);
+                                    balances.push_back(*balance);
+                                    limits.push_back(*limit);
+                                }
+                                finPA.close();
+                                ofstream foutPA
+                                (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
+                                for(int i=0; i<numbers.capacity(); i++)
+                                {
+                                    if(numbers[i]!= *numofAcc)
+                                    {
+                                        foutPA<<numbers[i]<<"\t"<<balances[i]<<"\t"<<limits[i]<<endl;
+                                    }
+                                    else{
+                                        foutPA<<Acc<<"\t"<<Acc.getLimit();
+                                        ofstream foutH(R"(C:\Users\Admin\Desktop\Payment_System\Lists\History.txt)"
+                                                       ,ios_base::app);
+                                        foutH<<numbers[i]<<"\t"<<balances[i]<<" -> " << balances[i]-amount<<
+                                        "\t"<<"withdrawing"<<endl;
+                                    }
+                                    foutPA.close();
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
             finE.close();
-            return true;
         }
     }
-    finE.close();
-    return false;
+    else
+        cerr<<"ERROR";
+
+}
+
+void ThrowMoney(string nameE, string surnameE,double amount){
+    if(IsEmpInFile(nameE,surnameE)) {
+        ifstream finE(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)");
+        if (!finE.is_open()) {
+            cerr << "Error opening file: " << endl;
+        } else {
+            shared_ptr<string> name{new string{""}};
+            shared_ptr<string> surname{new string{""}};
+            shared_ptr<string> position{new string{""}};
+            shared_ptr<int> salary{new int{0}};
+            shared_ptr<int> numofAcc{new int{0}};
+            while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
+                if (nameE == *name && surnameE == *surname) {
+                    finE.close();
+                    ifstream finPA(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
+                    if(!finPA.is_open())
+                        cerr<<"ERROR";
+                    else{
+                        shared_ptr<int> number{new int{0}};
+                        shared_ptr<double> balance{new double {0}};
+                        shared_ptr<double> limit{new double {0}};
+                        while (finPA >> *number >> *balance >> *limit) {
+                            if (*numofAcc == *number) {
+                                finPA.close();
+                            }
+                            PersonalAccount Acc(*number, *balance, *limit, Banker);
+                            Acc.addMoney(amount);
+                            vector<int> numbers;
+                            vector<double> balances;
+                            vector<double> limits;
+                            ifstream finPA
+                                    (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
+                            if (!finPA.is_open())
+                                cerr << "ERROR";
+                            else {
+                                while (finPA >> *number >> *balance >> *limit) {
+                                    numbers.push_back(*number);
+                                    balances.push_back(*balance);
+                                    limits.push_back(*limit);
+                                }
+                                finPA.close();
+                                ofstream foutPA
+                                        (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
+                                for(int i=0; i<numbers.capacity(); i++)
+                                {
+                                    if(numbers[i]!= *numofAcc)
+                                    {
+                                        foutPA<<numbers[i]<<"\t"<<balances[i]<<"\t"<<limits[i]<<endl;
+                                    }
+                                    else{
+                                        foutPA<<Acc<<"\t"<<Acc.getLimit();
+                                        ofstream foutH(R"(C:\Users\Admin\Desktop\Payment_System\Lists\History.txt)"
+                                                       ,ios_base::app);
+                                        foutH<<numbers[i]<<"\t"<<balances[i]<<" -> " << balances[i]+amount<<
+                                        "\t"<<"throwing"<<endl;
+                                    }
+                                    foutPA.close();
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            finE.close();
+        }
+    }
+    else
+        cerr<<"ERROR";
+
 }
 
 
+
 int main() {
-    Bank Banker("Banker",0.1,"Chernivtsi");
     cout<<"Welcome to the Banker!"<<endl<<endl;
     cout<<"Choose who you are: "<<endl<<"Enter 1 if you are the Admin"
     <<endl<<"Enter 2 if you are the User";
     Shtrix();
     int init;
     cin>>init;
+
     if(init == 1)   //for Admin
     {
         string password;
@@ -176,12 +327,13 @@ int main() {
             while(true) {
                 Shtrix();
                 cout << "Chose what do you want:" << endl;
-                cout << "A - to add PRIVATE COMPANY" << endl;
-                cout << "B - to add STATE COMPANY" << endl;
-                cout << "C - to add EMPLOYEE" << endl;
-                cout <<"D - to show list of Employee" << endl;
+                cout << "A - Add PRIVATE COMPANY" << endl;
+                cout << "B - Add STATE COMPANY" << endl;
+                cout << "C - Add EMPLOYEE" << endl;
+                cout <<"D - Show list of Employee" << endl;
                 cout << "press Q - if you want to stop";
                 Shtrix();
+
                 char choice;
                 cin >> choice;
                 try {
@@ -201,12 +353,13 @@ int main() {
                             AddEmployee(Banker);
                             break;
                         }
+
                         case 'D':{  //show employees
                             ReadEmployeesFromFile();
                             break;
                         }
-                        case 'Q': {
 
+                        case 'Q': {
                             return 0;
                         }
                     }
@@ -222,6 +375,7 @@ int main() {
         }
     }
 
+
     else{   //for user
         Shtrix();
         cout<<"Hello user";
@@ -233,17 +387,60 @@ int main() {
         cout<<"Enter your surname:"<<endl;
         shared_ptr <string> surname{new string {""}};
         cin>>*surname;
+
         if(IsEmpInFile(*name,*surname)){
-            Shtrix();
-            cout << "Chose what do you want:" << endl;
-            cout << "A - to make transaction" << endl;
-            cout << "B - view payment history" << endl;
-            cout << "C - " << endl;
-            cout <<"D - to " << endl;
-            cout << "press Q - if you want to stop";
-            Shtrix();
+            while (true) {
+                Shtrix();
+                cout << "Chose what do you want:" << endl;
+                cout << "A - Make transaction" << endl;
+                cout << "B - Withdraw money" << endl;
+                cout << "C - Top up the account" << endl;
+                cout <<"D - View payment history" << endl;
+                cout << "press Q - if you want to stop";
+                Shtrix();
+
+                char choice;
+                cin >> choice;
+                try {
+                    if (choice != 'A' && choice != 'B' && choice != 'C' &&  choice != 'D' && choice != 'Q')
+                        throw 0.0;
+                    switch (choice) {
+                        case 'A':{
+
+                            break;
+                        }
+
+                        case 'B':{
+                            shared_ptr <double> amount{new double {0}};
+                            cout<<"Enter amount of withdrawing:"<<endl;
+                            cin>>*amount;
+                            Withdraw(*name,*surname,*amount);
+                            break;
+                        }
+
+                        case 'C':{
+                            shared_ptr <double> amount{new double {0}};
+                            cout<<"Enter amount of throwing:"<<endl;
+                            cin>>*amount;
+                            ThrowMoney(*name,*surname,*amount);
+                            break;
+                        }
+
+                        case 'D':{
+                            break;
+                        }
+
+                        case 'Q':{
+                            return 0;
+
+                        }
+
+                    }
+                }
+                catch (double &ex) {
+                    cerr << "Wrong choice!!!";
+                }
+            }
         }
     }
-
-    return 0;
 }

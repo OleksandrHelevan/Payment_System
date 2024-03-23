@@ -1,0 +1,5 @@
+1	1350 -> 1100	withdrawing
+1	1100 -> 1000	withdrawing
+1	1000 -> 1250	throwing
+1	1250 -> 1500	throwing
+1	1500 -> 500	withdrawing
