@@ -1,5 +1,7 @@
-1	1350 -> 1100	withdrawing
-1	1100 -> 1000	withdrawing
-1	1000 -> 1250	throwing
-1	1250 -> 1500	throwing
-1	1500 -> 500	withdrawing
+1	13950 -> 14200	thrown_by Oleksandr Helevan
+1	14200 -> 28200	thrown_by Oleksandr Helevan
+1	28200 -> 27950	withdrawn_by Oleksandr Helevan
+1	27950 -> 26950	withdrawn_to Vova Zankovskiy
+2	13950 -> 14950	thrown_from Oleksandr Helevan
+1	26950 -> 21950	sent_to Vova Zankovskiy
+1	27950 -> 22950	sent_to Vova Zankovskiy

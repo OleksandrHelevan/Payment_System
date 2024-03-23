@@ -1,2 +1,2 @@
-Oleksandr Helevan	10000 	director	2
-Vova Zankovskiy		1000	programmer	1
+Oleksandr Helevan	10000 	director	1
+Vova Zankovskiy		1000	programmer	2
