@@ -20,4 +20,8 @@ add_executable(Payment_System main.cpp
         PrivatCompany.h
         StateCompany.cpp
         StateCompany.h
+        WrongType.h
+        FileException.h
+        WrongPassword.h
+        WrongChoice.h
 )
