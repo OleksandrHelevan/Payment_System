@@ -210,7 +210,7 @@ void WithdrawMoney(string nameE, string surnameE,double amount){
                                 finPA.close();
                                 ofstream foutPA
                                 (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
-                                for(int i=0; i<numbers.capacity(); i++)
+                                for(int i=0; i<numbers.size(); i++)
                                 {
                                     if(numbers[i]!= *numofAcc)
                                     {
@@ -282,7 +282,7 @@ void ThrowMoney(string nameE, string surnameE,double amount){
                                 finPA.close();
                                 ofstream foutPA
                                         (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
-                                for(int i=0; i<numbers.capacity(); i++)
+                                for(int i=0; i<numbers.size(); i++)
                                 {
                                     if(numbers[i]!= *numofAcc)
                                     {
@@ -356,7 +356,7 @@ void WithdrawMoneyTrans(string nameE, string surnameE,double amount,string nameE
                                 finPA.close();
                                 ofstream foutPA
                                         (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
-                                for(int i=0; i<numbers.capacity(); i++)
+                                for(int i=0; i<numbers.size(); i++)
                                 {
                                     if(numbers[i]!= *numofAcc)
                                     {
@@ -368,6 +368,7 @@ void WithdrawMoneyTrans(string nameE, string surnameE,double amount,string nameE
                                                 ,ios_base::app);
                                         foutH<<numbers[i]<<"\t"<<balances[i]<<" -> " << balances[i]-amount<<
                                              "\t"<<"sent_to "<<nameE2<<" "<<surnameE2<<endl;
+                                        foutH.close();
                                     }
                                 }
                                 foutPA.close();
@@ -397,7 +398,7 @@ void ThrowMoneyTrans(string nameE, string surnameE,double amount,string nameE2, 
             shared_ptr<int> salary{new int{0}};
             shared_ptr<int> numofAcc{new int{0}};
             while (finE >> *name >> *surname >> *salary >> *position >> *numofAcc) {
-                if (nameE == *name && surnameE == *surname) {
+                if (nameE2 == *name && surnameE2 == *surname) {
                     finE.close();
                     ifstream finPA(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
                     if(!finPA.is_open())
@@ -428,18 +429,19 @@ void ThrowMoneyTrans(string nameE, string surnameE,double amount,string nameE2, 
                                 finPA.close();
                                 ofstream foutPA
                                         (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Personal_Account_List.txt)");
-                                for(int i=0; i<numbers.capacity(); i++)
+                                for(int i=0; i<numbers.size(); i++)
                                 {
-                                    if(numbers[i]!= *numofAcc)
+                                    if(numbers[i] != *numofAcc)
                                     {
                                         foutPA<<numbers[i]<<"\t"<<balances[i]<<"\t"<<limits[i]<<endl;
                                     }
                                     else{
-                                        foutPA<<Acc<<"\t"<<Acc.getLimit()<<endl;
+                                        foutPA<<numbers[i]<<"\t"<<balances[i]+amount<<"\t"<<limits[i]<<endl;
                                         ofstream foutH(R"(C:\Users\Admin\Desktop\Payment_System\Lists\History.txt)"
                                                 ,ios_base::app);
                                         foutH<<numbers[i]<<"\t"<<balances[i]<<" -> " << balances[i]+amount<<
-                                             "\t"<<"sent_from "<<nameE2<<" "<<surnameE2<<endl;
+                                             "\t"<<"sent_from "<<nameE<<" "<<surnameE<<endl;
+                                        foutH.close();
                                     }
                                 }
                                 foutPA.close();
@@ -607,8 +609,8 @@ int main() {
 
                                 WithdrawMoneyTrans(*name, *surname, *amount,
                                                    *name2, *surname2);
-                                ThrowMoneyTrans(*name2, *surname2, *amount,
-                                                *name, *surname);
+                                ThrowMoneyTrans(*name, *surname, *amount,
+                                                *name2, *surname2);
                                 break;
                             }
 
