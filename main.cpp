@@ -123,7 +123,7 @@ void AddEmployee(Bank &bank){
 
     Employee Emp (*name,*surname,*salary,*pos,Acc);
     ofstream foutE (R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)",ios_base::app);
-    foutE<<Emp<<"\t"<<*num;
+    foutE<<Emp<<"\t"<<*num<<endl;
     foutE.close();
 }
 
@@ -409,8 +409,9 @@ void ThrowMoneyTrans(string nameE, string surnameE,double amount,string nameE2, 
                         shared_ptr<double> limit{new double {0}};
                         while (finPA >> *number >> *balance >> *limit) {
                             if (*numofAcc == *number) {
-                                finPA.close();
+                                break;
                             }
+                            finPA.close();
                             PersonalAccount Acc(*number, *balance, *limit, Banker);
                             Acc.addMoney(amount);
                             vector<int> numbers;
@@ -436,6 +437,7 @@ void ThrowMoneyTrans(string nameE, string surnameE,double amount,string nameE2, 
                                         foutPA<<numbers[i]<<"\t"<<balances[i]<<"\t"<<limits[i]<<endl;
                                     }
                                     else{
+                                        cout<<amount;
                                         foutPA<<numbers[i]<<"\t"<<balances[i]+amount<<"\t"<<limits[i]<<endl;
                                         ofstream foutH(R"(C:\Users\Admin\Desktop\Payment_System\Lists\History.txt)"
                                                 ,ios_base::app);

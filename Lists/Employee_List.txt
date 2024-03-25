@@ -1,3 +1,4 @@
 Oleksandr Helevan	10000 	director	1
 Vova Zankovskiy		1000	programmer	2
 Ivan Who		1000	lawyer		3
+Danya Yakymiv		200000	dvornik		4 	

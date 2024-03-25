@@ -1,17 +1,1 @@
-1	10000 -> 9000	sent_to Ivan Who
-3	30000 -> 31000	sent_from Oleksandr Helevan
-3	30000 -> 31000	sent_from Oleksandr Helevan
-1	9000 -> 4000	sent_to Vova Zankovskiy
-2	20000 -> 25000	sent_from Oleksandr Helevan
-1	4000 -> 3500	sent_to Ivan Who
-1	3500 -> 4000	sent_from Oleksandr Helevan
-1	4000 -> 3000	sent_to Ivan Who
-3	30000 -> 31000	sent_from Oleksandr Helevan
-1	3000 -> 2750	sent_to Ivan Who
-1	4000 -> 3750	sent_to Ivan Who
-1	2750 -> 1750	sent_to Ivan Who
-3	30750 -> 31750	sent_from Oleksandr Helevan
-1	1750 -> 1500	sent_to Ivan Who
-3	30000 -> 30250	sent_from Oleksandr Helevan
-3	30250 -> 30500	sent_from Oleksandr Helevan
-3	30500 -> 30750	sent_from Oleksandr Helevan
+
