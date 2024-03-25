@@ -24,4 +24,6 @@ add_executable(Payment_System main.cpp
         FileException.h
         WrongPassword.h
         WrongChoice.h
+        Functions.cpp
+        Functions.h
 )
