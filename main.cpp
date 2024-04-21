@@ -304,7 +304,8 @@ int main() {
             cout<<"\tSecond";
             Shtrix();
             vector <int> intVec{1,2,3,4,5,6};
-            intVec = VectorLaba(intVec);
+            vector <Bank> BankVec{A1,A2,A3,B1,B2,B3};
+            BankVec = VectorLaba(BankVec);
 
             Shtrix();
             cout<<"\tThird";

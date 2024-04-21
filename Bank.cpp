@@ -40,4 +40,7 @@ ostream &operator<<(ostream &os, const Bank &obj){
     os<<obj.nameofBank<<"\t"<<obj.tax<<"\t"<<obj.city;
     return os;
 }
-
+double operator%(const Bank &lhs, int  value){
+    int tax1  =lhs.tax*10;
+    return tax1 % value;
+}

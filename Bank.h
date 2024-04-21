@@ -22,6 +22,7 @@ public:
     friend bool operator>(const Bank &lhs, const Bank &rhs);
     friend bool operator==(const Bank &lhs, const Bank &rhs);
     friend bool operator!=(const Bank &lhs, const Bank &rhs);
+    friend double operator%(const Bank &lhs,int  value);
 };
 
 
