@@ -18,6 +18,10 @@ public:
     ~Bank(){};
     void getBank();
     friend ostream &operator<<(ostream &os, const Bank &obj);
+    friend bool operator<(const Bank &lhs, const Bank &rhs);
+    friend bool operator>(const Bank &lhs, const Bank &rhs);
+    friend bool operator==(const Bank &lhs, const Bank &rhs);
+    friend bool operator!=(const Bank &lhs, const Bank &rhs);
 };
 
 

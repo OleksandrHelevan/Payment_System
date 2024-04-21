@@ -24,26 +24,60 @@ void swaps(T &lhs, T&rhs){
     swap(lhs,rhs);
 }
 template <typename T>
-void Laba9Ex(array <T,3> &A, array<T,3> &B){
-    array <T,3> A1;
-    array <T,3> B1;
-    for (int i=0 ;i<3; i++) {
-        for(int j=i+1; j<3;j++){
+array<T,100> ArrayLaba(array <T,3> &A, array<T,3> &B, int size1, int size2){
+    for (int i=0 ;i<size1; i++) {
+        for(int j=i+1; j<size1;j++){
             if(A[i]>A[j]){
-                //unique_ptr<T> p = make_unique<T>();
-//                *p = A[i];
-//                A[i] = A[j];
-//                A[j] = *p;
-            };
+                unique_ptr<T> p = make_unique<T>();
+                *p = A[i];
+                A[i] = A[j];
+                A[j] = *p;
+            }
         }
     }
 
-    for(int i=0; i<3; i++ ){
+    for (int i=0 ;i<size2; i++) {
+        for(int j=i+1; j<size2;j++){
+            if(B[i]>B[j]){
+                unique_ptr<T> p = make_unique<T>();
+                *p = B[i];
+                B[i] = B[j];
+                B[j] = *p;
+            }
+        }
+    }
+    array<T,100> C;
+    for(int i=0; i<size1; i++ ){
        cout<<A[i]<<endl;
     }
+    Shtrix();
+    for(int i=0; i<size2; i++ ) {
+        cout << B[i] << endl;
+    }
 
+    Shtrix();
+    for (int i=0; i<size1+size2; i++){
+        if(i<size1)
+            C[i] = A[i];
+        else C[i] = B[i-size1];
+    }
 
-};
+    for (int i=0; i<size1+size2; i++)
+        cout<<C[i]<<endl;
+
+    for (int i =0; i<size1+size2; i++)
+    for(int j=i+1; j<size1+size2;j++){
+        if(C[i]>C[j]){
+            unique_ptr<T> p = make_unique<T>();
+            *p = C[i];
+            C[i] = C[j];
+            C[j] = *p;
+        }
+    }
+
+    return C;
+}
+
 
 int main() {
     cout<<"Welcome to the Banker!"<<endl<<endl;
@@ -196,20 +230,29 @@ int main() {
                 throw FileExcaption();
         }
         else if(init ==3){
-            cout<<"Laba 9 "<<endl;
+            cout<<"First "<<endl;
             Shtrix();
-            Bank Laba9 ("Example",0,"Khust");
-            PersonalAccount one (3,3000,1000,Laba9);
-            PersonalAccount two (1,1000,1000,Laba9);
-            PersonalAccount three (2,2000,1000,Laba9);
+            Bank A1 ("SECOND",0.2,"Khust");
+            Bank A2 ("THIRD",0.3,"Khust");
+            Bank A3 ("FIRST",0.1,"Khust");
 
-            PersonalAccount one1 (5,5000,1000,Laba9);
-            PersonalAccount two1 (4,4000,1000,Laba9);
-            PersonalAccount three1 (3,3000,1000,Laba9);
-            array <PersonalAccount, 3> A {one,two,three};
-            array <PersonalAccount, 3> B {one1,two1,three1};
-            array <int,3> C {3,1,2};
-            Laba9Ex(A, A );
+            Bank B1 ("SECOND",0.2,"Khust");
+            Bank B2 ("FIFTH",0.5,"Khust");
+            Bank B3 ("FOURTH",0.4,"Khust");
+
+            array <Bank,3> A {A1,A2,A3};
+            array <Bank,3> B {B1,B2,B3};
+            array <Bank,100> C;
+            C = ArrayLaba(A,B,A.size(),B.size());
+            Shtrix();
+            for (int i = 0; i< 6; i++)
+                cout<<C[i]<<endl;
+            Shtrix();
+            cout<<"\tSecond"<<endl;
+            Shtrix();
+            vector <Bank> VA{A1,A2,A3,B1,B2,B3};
+
+
         }
     }
     catch(WrongPassword &Password){

@@ -15,6 +15,21 @@ Bank::Bank(string name, double newTax)
 Bank::Bank(string name, double newTax, string newCity)
         :nameofBank{name}, tax{newTax}, city{newCity} {}
 
+bool operator<(const Bank &lhs, const Bank &rhs){
+    return lhs.tax<rhs.tax;
+}
+
+bool operator>(const Bank &lhs, const Bank &rhs){
+    return lhs.tax>rhs.tax;
+}
+
+bool operator==(const Bank &lhs, const Bank &rhs){
+    return lhs.tax==rhs.tax;
+}
+
+bool operator!=(const Bank &lhs, const Bank &rhs){
+    return lhs.tax!=rhs.tax;
+}
 
 
 void Bank::getBank() {
@@ -22,7 +37,7 @@ void Bank::getBank() {
 }
 
 ostream &operator<<(ostream &os, const Bank &obj){
-    os<<obj.nameofBank<<"\n"<<"Tax: "<<obj.tax<<"\n"<<"City: "<<obj.city<<endl;
+    os<<obj.nameofBank<<"\t"<<obj.tax<<"\t"<<obj.city;
     return os;
 }
 
