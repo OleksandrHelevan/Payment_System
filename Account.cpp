@@ -16,10 +16,17 @@ Account::Account(int newnumber)
 Account::Account(int newnumber, double newbalance, Bank thebank)
         :number{newnumber}, balance{newbalance}, bank(thebank) {}
 
-
-Account::Account(Account &other) {
+Account &Account::operator=(const Account &rhs) {
+    if (this != &rhs){
+        this->balance = rhs.balance;
+        this->number = rhs.number;
+        this->bank = rhs.bank;
+    } else return *this;
+}
+Account::Account(Account const &other) {
     this->number = other.number;
     this->balance = other.balance;
+    this->bank = other.bank;
 }
 
 void Account::getAccount(){
@@ -41,4 +48,17 @@ void Account::takeMoney(double amount) {
 
 void Account::addMoney(double amount) {
     balance+=amount;
+}
+
+bool operator>(const Account &lhs, const Account &rhs){
+    return lhs.balance>rhs.balance;
+}
+bool operator<(const Account &lhs, const Account &rhs){
+    return lhs.balance>rhs.balance;
+}
+bool operator==(const Account &lhs, const Account &rhs){
+    return lhs.balance==rhs.balance;
+}
+bool operator!=(const Account &lhs, const Account &rhs){
+    return lhs.balance!=rhs.balance;
 }

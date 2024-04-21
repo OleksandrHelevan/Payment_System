@@ -1,4 +1,6 @@
 #include <iostream>
+#include <array>
+#include <algorithm>
 #include "Employee.h"
 #include "Company.h"
 #include "Bank.h"
@@ -17,6 +19,31 @@
 #include "Functions.h"
 
 Bank Banker("Banker",0.1,"Chernivtsi");
+template <typename T>
+void swaps(T &lhs, T&rhs){
+    swap(lhs,rhs);
+}
+template <typename T>
+void Laba9Ex(array <T,3> &A, array<T,3> &B){
+    array <T,3> A1;
+    array <T,3> B1;
+    for (int i=0 ;i<3; i++) {
+        for(int j=i+1; j<3;j++){
+            if(A[i]>A[j]){
+                //unique_ptr<T> p = make_unique<T>();
+//                *p = A[i];
+//                A[i] = A[j];
+//                A[j] = *p;
+            };
+        }
+    }
+
+    for(int i=0; i<3; i++ ){
+       cout<<A[i]<<endl;
+    }
+
+
+};
 
 int main() {
     cout<<"Welcome to the Banker!"<<endl<<endl;
@@ -26,7 +53,7 @@ int main() {
     int init;
     cin>>init;
     try {
-        if(init != 1 && init != 2)
+        if(init != 1 && init != 2 && init != 3)
             throw WrongType();
         if (init == 1)   //for Admin
         {
@@ -82,7 +109,7 @@ int main() {
             } else {
                 throw WrongPassword();
             }
-        } else {   //for user
+        } else if(init == 2){   //for user
             Shtrix();
             cout << "Hello user";
             Shtrix();
@@ -167,6 +194,22 @@ int main() {
             }
             else
                 throw FileExcaption();
+        }
+        else if(init ==3){
+            cout<<"Laba 9 "<<endl;
+            Shtrix();
+            Bank Laba9 ("Example",0,"Khust");
+            PersonalAccount one (3,3000,1000,Laba9);
+            PersonalAccount two (1,1000,1000,Laba9);
+            PersonalAccount three (2,2000,1000,Laba9);
+
+            PersonalAccount one1 (5,5000,1000,Laba9);
+            PersonalAccount two1 (4,4000,1000,Laba9);
+            PersonalAccount three1 (3,3000,1000,Laba9);
+            array <PersonalAccount, 3> A {one,two,three};
+            array <PersonalAccount, 3> B {one1,two1,three1};
+            array <int,3> C {3,1,2};
+            Laba9Ex(A, A );
         }
     }
     catch(WrongPassword &Password){

@@ -8,9 +8,19 @@ PersonalAccount::PersonalAccount()
 PersonalAccount::PersonalAccount(int thenumber, double thebalance, double thelimit,Bank thebank)
     : Account(thenumber,thebalance,thebank),limit{thelimit}{}
 
-PersonalAccount::PersonalAccount(PersonalAccount &other)
+PersonalAccount::PersonalAccount(PersonalAccount const &other)
     : Account(other), limit{other.limit}{}
 
+//PersonalAccount::PersonalAccount(PersonalAccount &&other)
+//    : Account(other), limit{other.limit}{
+//    other.limit = 0;
+//}
+PersonalAccount &PersonalAccount::operator=(const PersonalAccount &rhs) {
+    if(this != &rhs)
+        this->limit = rhs.limit;
+    else
+        return *this;
+}
 
 void PersonalAccount::getAccount() {
     Account::getAccount();

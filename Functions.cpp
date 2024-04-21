@@ -139,12 +139,11 @@ void ReadEmployeesFromFile() {
     finE.close();
 }
 
-bool IsEmpInFile(string nameEm, string surnameEm){
+bool IsEmpInFile(string nameEm, string surnameEm) {
     ifstream finE(R"(C:\Users\Admin\Desktop\Payment_System\Lists\Employee_List.txt)");
     if (!finE.is_open()) {
         cerr << "Error opening file: " << endl;
-    }
-    else {
+    } else {
         shared_ptr<string> name{new string{""}};
         shared_ptr<string> surname{new string{""}};
         shared_ptr<string> position{new string{""}};

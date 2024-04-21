@@ -35,7 +35,7 @@ Company Company::operator=(const Company &rhs) {
         this->avarageSalary = rhs.avarageSalary;
         this->nameofCompany = rhs.nameofCompany;
         this->specialization = rhs.specialization;
-        this->acc = rhs.acc;
+        this->acc =rhs.acc;
         return *this;
     }
 }

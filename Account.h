@@ -14,13 +14,18 @@ public:
     Account(int newnumber);
     Account(int newnumber, double newbalance, Bank thebank);
     Account(int newnumber, double newbalance);
-    Account(Account &other);
+    Account(Account const &other);
+    Account &operator=(const Account &rhs);
     virtual ~Account(){}
     virtual void getAccount() = 0;
     virtual void getBank() = 0;
     virtual void takeMoney(double amount);
     virtual void addMoney(double amount);
     friend ostream &operator<<(ostream &os, const Account &obj);
+    friend bool operator>(const Account &lhs, const Account &rhs);
+    friend bool operator<(const Account &lhs, const Account &rhs);
+    friend bool operator==(const Account &lhs, const Account &rhs);
+    friend bool operator!=(const Account &lhs, const Account &rhs);
 };
 
 
