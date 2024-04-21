@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <deque>
 #include "Employee.h"
 #include "Company.h"
 #include "Bank.h"
@@ -76,9 +77,9 @@ array<T,100> ArrayLaba(array <T,3> &A, array<T,3> &B, int size1, int size2){
 
     return C;
 }
-template <typename T>
 
-void VectorLaba(vector <T> A){
+template <typename T>
+vector <T> VectorLaba(vector <T> A){
     int countp;
     int countnp;
     vector<T> Par;
@@ -89,10 +90,11 @@ void VectorLaba(vector <T> A){
             Par.push_back(*it);
         } else Npar.push_back(*it);
 
-        cout << *it << endl;
+        cout << *it << " ";
         it++;
 
     }
+    Shtrix();
     vector <T> Res;
     auto pit = Par.begin();
     while(pit!=Par.end()){
@@ -107,13 +109,27 @@ void VectorLaba(vector <T> A){
 
     auto resit = Res.begin();
     while(resit!=Res.end()) {
-        cout << *resit;
+        cout << *resit<<" ";
         resit++;
     }
 
-
+    return Res;
 }
 
+template <typename T>
+void DequeTest(deque<T> A){
+
+   int counter = 0;
+    for (int i=0; i<A.size(); i++){
+        if(A[i]==A[(A.size() -1) -i])
+            counter++;
+    }
+
+    if(counter == A.size())
+        cout<<"Deque is palindrome"<<endl;
+    else cout<<"Deque isn`t palindrome"<<endl;
+
+}
 
 int main() {
     cout<<"Welcome to the Banker!"<<endl<<endl;
@@ -283,12 +299,27 @@ int main() {
             Shtrix();
             for (int i = 0; i< 6; i++)
                 cout<<C[i]<<endl;
+
             Shtrix();
-            cout<<"\tSecond"<<endl;
+            cout<<"\tSecond";
             Shtrix();
-            vector <Bank> VA{A1,A2,A3,B1,B2,B3};
-            vector <int> Al{1,2,3,4,5,6};
-            VectorLaba(Al);
+            vector <int> intVec{1,2,3,4,5,6};
+            intVec = VectorLaba(intVec);
+
+            Shtrix();
+            cout<<"\tThird";
+            Bank C1 ("Bank", 0.1,"Chernivtsi");
+            Bank C2 ("Bank", 0.2,"Chernivtsi");
+            Bank C3 ("Bank", 0.3,"Chernivtsi");
+            Bank C4 ("Bank", 0.2,"Chernivtsi");
+            Bank C5 ("Bank", 0.1,"Chernivtsi");
+            Shtrix();
+            deque <Bank> Bankdeque{C1,C2,C3,C4,C5};
+            deque <int> intdeque{1,2,3,2,1};
+            cout<<"Bank deque: ";
+            DequeTest(Bankdeque);
+            cout<<"int deque: ";
+            DequeTest(intdeque);
 
         }
     }
