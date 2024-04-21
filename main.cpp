@@ -1,6 +1,5 @@
 #include <iostream>
 #include <array>
-#include <algorithm>
 #include "Employee.h"
 #include "Company.h"
 #include "Bank.h"
@@ -76,6 +75,43 @@ array<T,100> ArrayLaba(array <T,3> &A, array<T,3> &B, int size1, int size2){
     }
 
     return C;
+}
+template <typename T>
+
+void VectorLaba(vector <T> A){
+    int countp;
+    int countnp;
+    vector<T> Par;
+    vector <T> Npar;
+    auto it = A.begin();
+    while (it!=A.end()) {
+        if (*it % 2 == 0) {
+            Par.push_back(*it);
+        } else Npar.push_back(*it);
+
+        cout << *it << endl;
+        it++;
+
+    }
+    vector <T> Res;
+    auto pit = Par.begin();
+    while(pit!=Par.end()){
+        Res.push_back(*pit);
+        pit++;
+    }
+    auto npit = Npar.begin();
+    while(npit!=Npar.end()) {
+        Res.push_back(*npit);
+        npit++;
+    }
+
+    auto resit = Res.begin();
+    while(resit!=Res.end()) {
+        cout << *resit;
+        resit++;
+    }
+
+
 }
 
 
@@ -251,7 +287,8 @@ int main() {
             cout<<"\tSecond"<<endl;
             Shtrix();
             vector <Bank> VA{A1,A2,A3,B1,B2,B3};
-
+            vector <int> Al{1,2,3,4,5,6};
+            VectorLaba(Al);
 
         }
     }
