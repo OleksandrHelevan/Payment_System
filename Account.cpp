@@ -3,7 +3,6 @@
 using namespace std;
 
 
-
 Account::Account()
         :Account{ 0 , 0, Bank("Bank",0,"city")}{}
 
